@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="user.css"/>  
+</head>
+<body>
+    <div class="container">
+        <header id="main-header" class="text-white p-4 mb-3">
+            <button id="btn">☰</button>
+        
+            <nav id="nav">
+                <ul>
+                    <li><a href="../ExpenseTracker/index.html">Home</a></li>
+                    <div class="premium-feature"> 
+                    </div>
+                    <button id="logout">Logout</button><br><br>
+                </ul>
+            </nav>
+                    <h1 id="header-title">Expense Tracker</h1>
+              
+          </header>
+          <br>
+        <!-- -------adding expense form----- -->
+         <div class="expense_form_container">
+
+            <form class="user_name_Form" id="expense_from">
+                <div class="form_iems">
+                    <label for="money_spend"><h2>User Name</h2></label>
+                    <h2 class="username_show" id="username_show"></h2>
+           </div>
+         
+            </form>
+        </div> 
+        <!-- ----------showing expense ----------- -->
+        <div class="expense_show_container">
+
+            <div class="expense" id="expense">
+
+                <form class="expense_show_form" >
+
+                    <div class="expense_header">
+                        <p>SNO</p>
+                        <p>Amount</p>
+                        <p>Description</p>
+                        <p>Category</p>
+                        <p>Date</p>
+
+                    </div>
+
+                    <div class="expense_item_cont" id="expense_item_cont">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./user.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</body>
+</html>
