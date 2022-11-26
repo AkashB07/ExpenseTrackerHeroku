@@ -50,6 +50,9 @@ app.use('/purchase', purchaseRoutes)
 app.use('/expense', expenseRoutes)
 app.use('/password', resetPasswordRoutes);
 app.use('/downloadlist', downloadlistRoutes)
+app.use((req, res)=>{
+    res.sendFile(path.join(__dirname, `public/Login/login.html`))
+})
 
 User.hasMany(Expense);
 Expense.belongsTo(User);

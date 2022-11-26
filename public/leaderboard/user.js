@@ -1,3 +1,6 @@
+// const url = 'http://localhost'
+const url ='http://52.66.252.234'
+
 const expenseForm=document.getElementById('expense_from')
 
 const btn = document.getElementById("btn");
@@ -13,7 +16,7 @@ let count=1;
 
 window.addEventListener('DOMContentLoaded',async()=>{
     try {
-        const user = await axios.get('http://localhost:3000/expense/getuser', {headers: {"Authorization" : token}})
+        const user = await axios.get(`${url}:3000/expense/getuser`, {headers: {"Authorization" : token}})
        const premium = user.data.user.ispremiumuser;
        if(premium){
         let premiumDiv = document.querySelector(".premium-feature")
@@ -26,7 +29,7 @@ window.addEventListener('DOMContentLoaded',async()=>{
             let paramString = window.location.href;
             const id=paramString.split('userid=')[1]
             const expense_item_cont=document.getElementById('expense_item_cont')
-            let data = await axios.get(`http://localhost:3000/expense/getexpensebyid/${id}`,{
+            let data = await axios.get(`${url}:3000/expense/getexpensebyid/${id}`,{
                 headers:{"Authorization":token}})
 
 

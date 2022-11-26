@@ -1,3 +1,7 @@
+// const url = 'http://localhost'
+const url ='http://52.66.252.234'
+
+
 const token = localStorage.getItem('token');
 
 const btn = document.getElementById("btn");
@@ -14,7 +18,7 @@ btn.addEventListener("click", () => {
 
 window.addEventListener('DOMContentLoaded', async()=>{
     try {
-       const user = await axios.get('http://localhost:3000/expense/getuser', {headers: {"Authorization" : token}})
+       const user = await axios.get(`${url}:3000/expense/getuser`, {headers: {"Authorization" : token}})
        const premium = user.data.user.ispremiumuser;
        console.log(premium)
        if(premium){
@@ -26,7 +30,7 @@ window.addEventListener('DOMContentLoaded', async()=>{
             `
             document.body.classList.add('dark')
         
-        const downloaddata = await axios.get('http://localhost:3000/downloadlist/report', {headers: {"Authorization" : token}})
+        const downloaddata = await axios.get(`${url}:3000/downloadlist/report`, {headers: {"Authorization" : token}})
         const data=downloaddata.data
         const downloadlist_form=document.getElementById('downloadlist_form')
         for(let i=0;i<data.length;i++){
@@ -35,7 +39,7 @@ window.addEventListener('DOMContentLoaded', async()=>{
         </li>`
        }  
 
-       let dailyExpenses = await axios.get('http://localhost:3000/downloadlist/getDailyExpenses', { headers: {"Authorization" : token} })
+       let dailyExpenses = await axios.get(`${url}:3000/downloadlist/getDailyExpenses`, { headers: {"Authorization" : token} })
     
        let dailyArray = dailyExpenses.data
        
@@ -43,7 +47,7 @@ window.addEventListener('DOMContentLoaded', async()=>{
            display(dailyArray[i].expenseamount, dailyArray[i].category, dailyArray[i].description, dailyArray[i].createdAt.slice(0,10), dailyList)
        }
    
-       let weeklyExpenses = await axios.get('http://localhost:3000/downloadlist/getWeeklyExpenses', { headers: {"Authorization" : token} })
+       let weeklyExpenses = await axios.get(`${url}:3000/downloadlist/getWeeklyExpenses`, { headers: {"Authorization" : token} })
        //console.log(weeklyExpenses)
    
        let weeklyArray = weeklyExpenses.data
@@ -53,7 +57,7 @@ window.addEventListener('DOMContentLoaded', async()=>{
            display(weeklyArray[i].expenseamount, weeklyArray[i].category, weeklyArray[i].description, weeklyArray[i].createdAt.slice(0,10), weeklyList)
        }
    
-       let monthlyExpenses = await axios.get('http://localhost:3000/downloadlist/getMonthlyExpenses', { headers: {"Authorization" : token} }) 
+       let monthlyExpenses = await axios.get(`${url}:3000/downloadlist/getMonthlyExpenses`, { headers: {"Authorization" : token} }) 
     //    console.log(monthlyExpenses)
    
        let monthlyArray = monthlyExpenses.data

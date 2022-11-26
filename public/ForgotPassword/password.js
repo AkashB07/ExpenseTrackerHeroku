@@ -1,3 +1,6 @@
+// const url = 'http://localhost'
+const url ='http://52.66.252.234'
+
 function forgotpassword(e) {
     e.preventDefault();
     const form = new FormData(e.target);
@@ -6,7 +9,7 @@ function forgotpassword(e) {
         email: form.get("email"),
     }
     console.log(userDetails)
-    axios.post('http://localhost:3000/password/forgotpassword',userDetails).then(response => {
+    axios.post(`${url}:3000/password/forgotpassword`,userDetails).then(response => {
         if(response.status === 202){
             document.body.innerHTML += '<div style="color:red;">Mail Successfuly sent <div>'
         } else {

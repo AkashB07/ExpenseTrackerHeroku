@@ -1,3 +1,6 @@
+// const url = 'http://localhost'
+const url ='http://52.66.252.234'
+
 async function signup(e)
 {
     try 
@@ -10,7 +13,7 @@ async function signup(e)
         }
         console.log(signupDetails.email);
 
-        const respone = await axios.post('http://localhost:3000/user/signup', signupDetails)
+        const respone = await axios.post(`${url}:3000/user/signup`, signupDetails)
         if(respone.status == 201)
         {
             window.location.href ="../Login/login.html";

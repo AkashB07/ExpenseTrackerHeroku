@@ -1,3 +1,6 @@
+// const url = 'http://localhost'
+const url ='http://52.66.252.234'
+
 const token = localStorage.getItem('token');
 
 const btn = document.getElementById("btn");
@@ -10,7 +13,7 @@ btn.addEventListener("click", () => {
 
 window.addEventListener('DOMContentLoaded',async ()=>{
     try {
-        const user = await axios.get('http://localhost:3000/expense/getuser', {headers: {"Authorization" : token}})
+        const user = await axios.get(`${url}:3000/expense/getuser`, {headers: {"Authorization" : token}})
        const premium = user.data.user.ispremiumuser;
        console.log(premium)
        if(premium){
@@ -22,7 +25,7 @@ window.addEventListener('DOMContentLoaded',async ()=>{
             `
 
             user_cont=  document.getElementById('use_cont')
-            const alluser = await axios.get(`http://localhost:3000/user/getallusers`,{ headers: {"Authorization" : token}})
+            const alluser = await axios.get(`${url}:3000/user/getallusers`,{ headers: {"Authorization" : token}})
             let paramString = window.location.href;
             console.log(paramString.split('/'))
             console.log(alluser.data)

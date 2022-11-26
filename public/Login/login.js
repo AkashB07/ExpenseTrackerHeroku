@@ -1,3 +1,6 @@
+// const url = 'http://localhost'
+const url ='http://52.66.252.234'
+
 async function login(e)
 {
     try 
@@ -9,7 +12,7 @@ async function login(e)
         }
         console.log(loginDetails);
 
-        const respone = await axios.post('http://localhost:3000/user/login', loginDetails)
+        const respone = await axios.post(`${url}:3000/user/login`, loginDetails)
         alert(respone.data.message);
         localStorage.setItem('token', respone.data.token)
         window.location.href = "../ExpenseTracker/index.html?page=1";
