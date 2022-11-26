@@ -1,5 +1,7 @@
 const token = localStorage.getItem('token');
 
+var totalPages;
+
 async function addNewExpense(e){
     try {
         e.preventDefault();
@@ -27,14 +29,18 @@ btn.addEventListener("click", () => {
 
 window.addEventListener('DOMContentLoaded', async()=>{
     try {
-        const respone = await axios.get('http://localhost:3000/expense/getexpenses', {headers: {"Authorization" : token}})
+        var page = location.href.split("page=").slice(-1)[0] || 1
+        const respone = await axios.get(`http://localhost:3000/expense/getexpenses/?page=${page}`, {headers: {"Authorization" : token}})
+        totalPages=respone.data.pageCount;
+        console.log(location.href.split("page="))
         respone.data.expenses.forEach(expense => {
         addNewExpensetoUI(expense);
        });
+       paginationHtmlCreation(totalPages)
 
        const user = await axios.get('http://localhost:3000/expense/getuser', {headers: {"Authorization" : token}})
        const premium = user.data.user.ispremiumuser;
-       console.log(premium)
+     //console.log(premium)
        if(premium){
         let premiumDiv = document.querySelector(".premium-feature")
 
@@ -53,6 +59,17 @@ window.addEventListener('DOMContentLoaded', async()=>{
         showError(err);
     }
 })
+
+function paginationHtmlCreation(totalpage){
+    const pagination=document.getElementById('pagination')
+
+    for(var i=1;i<=totalpage;i++){
+        // console.log("page is "+i)
+        const aTag= `<a class="paginationBtns" id="paginationBtns" href="./index.html?page=${i}">${i}</a>`
+        pagination.innerHTML= pagination.innerHTML+aTag
+
+    }
+}
 
 function addNewExpensetoUI(expense){
     const parentElement = document.getElementById('listOfExpenses');

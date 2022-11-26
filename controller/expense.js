@@ -2,7 +2,9 @@ const Expense = require('../models/expenses');
 const User = require('../models/users');
 const UserServices = require('../services/userservices');
 const S3Services  = require('../services/S3services');
-const DownloadList = require('../models/downloadlist')
+const DownloadList = require('../models/downloadlist');
+
+const ITEAM_PER_PAGE=3;
 
 function isexpensevalid(string){
     if(string == undefined || string.length === 0){
@@ -15,9 +17,18 @@ function isexpensevalid(string){
 
 const getExpense = async (req, res) => {
     try {
+        const page=req.query.page || 1;
+        
+        var totalCountPage;
+        const pagecnt = await Expense.count({where: {userId: req.user.id}});
+        totalCountPage=Math.ceil(pagecnt/ITEAM_PER_PAGE)
+        
+        console.log(req.query.page)
+        console.log('123')
         // const expenses = await Expense.findAll({where: {userId: req.user.id}});
-        const expenses = await req.user.getExpenses({limit:10, offset:0})
-        return res.status(200).json({expenses, succese: true});   
+        const expenses = await Expense.findAll({where: {userId: req.user.id}, offset:(page-1)*ITEAM_PER_PAGE, limit:ITEAM_PER_PAGE})
+        
+        return res.status(200).json({expenses, pageCount:totalCountPage, succese: true});   
     } 
     catch (err) {
         return res.status(500).json({succese: false, error: err})
