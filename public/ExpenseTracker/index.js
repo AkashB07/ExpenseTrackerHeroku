@@ -32,7 +32,11 @@ btn.addEventListener("click", () => {
 
 window.addEventListener('DOMContentLoaded', async()=>{
     try {
-        var page = location.href.split("page=").slice(-1)[0] || 1
+        let page = location.href.split("page=").slice(-1)[0] || 1;
+        if(page.length>3){
+           page=1
+        }
+        console.log(location.href.split("page=").slice(-1)[0])
         const respone = await axios.get(`${url}:3000/expense/getexpenses/?page=${page}`, {headers: {"Authorization" : token}})
         totalPages=respone.data.pageCount;
         console.log(location.href.split("page="))
@@ -142,12 +146,12 @@ document.getElementById('rzp-button1').onclick = async function (e) {
     var options =
     {
      "key": response.data.key_id, // Enter the Key ID generated from the Dashboard
-     "name": "AB Technology",
+     "name": "AB Company",
      "order_id": response.data.order.id, // For one time payment
      "prefill": {
-       "name": "Akash",
-       "email": "akash@gmail.com",
-       "contact": "6987123456"
+       "name": "Test User",
+       "email": "test.user@example.com",
+       "contact": "7003442036"
      },
      "theme": {
       "color": "#3399cc"
@@ -155,11 +159,10 @@ document.getElementById('rzp-button1').onclick = async function (e) {
      // This handler function will handle the success payment
      "handler": function (response) {
          console.log(response);
-         axios.post(`${url}3000/purchase/updatetransactionstatus`,{
+         axios.post('http://localhost:3000/purchase/updatetransactionstatus',{
              order_id: options.order_id,
              payment_id: response.razorpay_payment_id,
          }, { headers: {"Authorization" : token} }).then(() => {
-            localStorage.setItem('membrship', 'true');
              alert('You are a Premium User Now')
          }).catch(() => {
              alert('Something went wrong. Try Again!!!')
@@ -180,7 +183,6 @@ document.getElementById('rzp-button1').onclick = async function (e) {
   alert(response.error.metadata.payment_id);
  });
 }
-
 
 let logoutBtn = document.querySelector('#logout')
 
