@@ -16,7 +16,7 @@ async function addNewExpense(e){
             
         }
         const response = await axios.post(`${url}:3000/expense/addexpense`, expenseDetails, {headers: {"Authorization" : token}})
-        addNewExpensetoUI(response.data.expense);
+        display();
 
     } catch (err) {
         showError(err);
@@ -32,18 +32,7 @@ btn.addEventListener("click", () => {
 
 window.addEventListener('DOMContentLoaded', async()=>{
     try {
-        let page = location.href.split("page=").slice(-1)[0] || 1;
-        if(page.length>3){
-           page=1
-        }
-        console.log(location.href.split("page=").slice(-1)[0])
-        const respone = await axios.get(`${url}:3000/expense/getexpenses/?page=${page}`, {headers: {"Authorization" : token}})
-        totalPages=respone.data.pageCount;
-        console.log(location.href.split("page="))
-        respone.data.expenses.forEach(expense => {
-        addNewExpensetoUI(expense);
-       });
-       paginationHtmlCreation(totalPages)
+        display()
 
        const user = await axios.get(`${url}:3000/expense/getuser`, {headers: {"Authorization" : token}})
        const premium = user.data.user.ispremiumuser;
@@ -58,14 +47,35 @@ window.addEventListener('DOMContentLoaded', async()=>{
             `
             document.body.classList.add('dark')
 
-       }
-      
-            
+       }   
     } 
     catch (err) {
         showError(err);
     }
 })
+
+async function display()
+{
+    try {
+        document.getElementById('listOfExpenses').innerHTML='';
+        document.getElementById('pagination').innerHTML='';
+        let page = location.href.split("page=").slice(-1)[0] || 1;
+        if(page.length>3){
+           page=1
+        }
+        console.log(location.href.split("page=").slice(-1)[0])
+        const respone = await axios.get(`${url}:3000/expense/getexpenses/?page=${page}`, {headers: {"Authorization" : token}})
+        totalPages=respone.data.pageCount;
+        console.log(location.href.split("page="))
+        respone.data.expenses.forEach(expense => {
+        addNewExpensetoUI(expense);
+       });
+       paginationHtmlCreation(totalPages)
+        
+    } catch (error) {
+       showError(err);
+    }
+}
 
 function paginationHtmlCreation(totalpage){
     const pagination=document.getElementById('pagination')
@@ -80,6 +90,7 @@ function paginationHtmlCreation(totalpage){
 
 function addNewExpensetoUI(expense){
     const parentElement = document.getElementById('listOfExpenses');
+    
     const expenseElemId = `expense-${expense.id}`;
     parentElement.innerHTML += `
     <li id=${expenseElemId}>
