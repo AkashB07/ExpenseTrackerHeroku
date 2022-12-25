@@ -1,0 +1,206 @@
+.expense_form_container {
+  height: 30%;
+}
+
+.expense_form_container .user_name_Form {
+  background-color: white;
+  height: 28%;
+  width: 18%;
+  margin: 10px auto;
+  border-radius: 15px;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.expense_form_container .expense_from {
+  height: 80%;
+  width: 18%;
+  margin: 10px auto;
+  border-radius: 15px;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.expense_form_container .expense_from .form_iems {
+  margin-top: 10px;
+}
+
+.expense_form_container .expense_from .form_iems input {
+  border: none;
+  border-radius: 4px;
+  width: 90px;
+  height: 20px;
+}
+
+.expense_form_container .expense_from .form_iems .description {
+  height: 30px;
+  width: 100px;
+}
+
+.expense_form_container .expense_from .add_expense_btn {
+  border: none;
+  margin-top: 10px;
+  margin: 10px auto;
+  width: 30px;
+  height: 30px;
+ 
+  border-radius: 100px;
+  margin-left: 46%;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.expense_show_container {
+  height: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+}
+
+.expense_show_container .expense {
+  width: 70%;
+  height: 450px;
+  border-radius: 15px;
+}
+
+.expense_show_container .expense .expense_show_form {
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 10px;
+}
+
+.expense_show_container .expense .expense_show_form .expense_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.expense_show_container .expense .expense_show_form .expense_header p {
+  margin-right: 10px;
+  font-weight: 900;
+}
+
+
+.expense_show_container .expense .expense_show_form .expense_item_cont .expense_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.expense_show_container .expense .expense_show_form .expense_item_cont .expense_item p {
+  margin-right: 10px;
+  font-weight: 400;
+}
+
+.expense_show_container .expense .expense_show_form .pages {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+h2{
+  text-align: center;
+}
+
+h1{
+  color: rgb(76, 121, 117);;
+  text-align: center;
+}
+
+#btn {
+  background-color: white;
+  border: none;
+  color: #0d2d3a;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 1rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+#btn.active {
+  transform: translateX(-130px);
+}
+
+nav {
+  background-color: #20524f;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  padding: 2rem;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+nav.active {
+  transform: translateX(0);
+}
+
+nav ul {
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+}
+
+nav ul li {
+  padding: 1rem 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover{
+text-decoration: none;
+color: white;
+}
+
+nav button{
+border: none;
+background-color: #0d2d3a;
+color: white;
+padding: 0;
+cursor: pointer;
+}

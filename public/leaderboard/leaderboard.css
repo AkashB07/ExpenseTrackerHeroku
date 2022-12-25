@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+  }
+  
+  body {
+    width: 100%;
+    height: 100vh;
+  }
+  
+  h1{
+    color: rgb(76, 121, 117);;
+    text-align: center;
+  }
+
+  h2{
+    text-align: center;
+  }
+
+  .container {
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  
+  .container .leaderboard {
+    margin-bottom: 20px;
+  }
+  
+  .use_cont {
+    
+    padding: 20px;
+    overflow: hidden;
+    border-radius: 20px;
+    -webkit-backdrop-filter: blur(2.8em);
+            backdrop-filter: blur(2.8em);
+    width: 500px;
+    height: 500px;
+    background-color: rgba(255, 255, 255, 0.23);
+  }
+  
+  .use_cont .user_heading {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .use_cont .users {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+
+  #btn {
+    background-color: white;
+    border: none;
+    color: #0d2d3a;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+#btn.active {
+    transform: translateX(-130px);
+}
+
+nav {
+    background-color: #20524f;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    padding: 2rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+nav.active {
+    transform: translateX(0);
+}
+
+nav ul {
+    padding: 0;
+    list-style-type: none;
+    margin: 0;
+}
+
+nav ul li {
+    padding: 1rem 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover{
+	text-decoration: none;
+	color: white;
+}
+
+nav button{
+	border: none;
+	background-color: #0d2d3a;
+	color: white;
+	padding: 0;
+	cursor: pointer;
+}
