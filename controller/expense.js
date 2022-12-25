@@ -17,7 +17,7 @@ function isexpensevalid(string){
 
 const getExpense = async (req, res) => {
     try {
-        const page=req.query.page || 1;
+        const page=(+req.query.page || 1);
         console.log(req.query)
         var totalCountPage;
         const pagecnt = await Expense.count({where: {userId: req.user.id}});

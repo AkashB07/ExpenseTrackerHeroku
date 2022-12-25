@@ -4,7 +4,6 @@ const dotnev = require('dotenv');
 dotnev.config();
 
 const express = require('express');
-const https = require('https');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const  cors = require('cors');
@@ -50,9 +49,7 @@ app.use('/purchase', purchaseRoutes)
 app.use('/expense', expenseRoutes)
 app.use('/password', resetPasswordRoutes);
 app.use('/downloadlist', downloadlistRoutes)
-app.use((req, res)=>{
-    res.sendFile(path.join(__dirname, `public/Login/login.html`))
-})
+
 
 User.hasMany(Expense);
 Expense.belongsTo(User);

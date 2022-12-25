@@ -14,7 +14,7 @@ router.get('/getuser', userauthentication.authenticate, expenseController.getUse
 
 router.delete('/deleteexpense/:expenseid', userauthentication.authenticate, expenseController.deleteexpense)
 
-router.get('/getexpensebyid/:userId',expenseController.getExpenseById)
+router.get('/getexpensebyid/:userId', userauthentication.authenticate, expenseController.getExpenseById)
 
 router.get('/download', userauthentication.authenticate, expenseController.downloadexpenses)
 

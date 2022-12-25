@@ -1,7 +1,3 @@
-const Expense = require('../models/expenses');
-const User = require('../models/users');
-const UserServices = require('../services/userservices');
-const S3Services  = require('../services/S3services');
 const DownloadList = require('../models/downloadlist')
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;

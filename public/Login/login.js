@@ -1,5 +1,5 @@
-// const url = 'http://localhost'
-const url ='http://52.66.252.234'
+const url = 'http://localhost'
+// const url ='http://52.66.252.234'
 
 async function login(e)
 {
@@ -10,7 +10,8 @@ async function login(e)
             email: e.target.email.value,
             password: e.target.password.value
         }
-        console.log(loginDetails);
+        e.target.email.value = '';
+        e.target.password.value= '';
 
         const respone = await axios.post(`${url}:3000/user/login`, loginDetails)
         alert(respone.data.message);

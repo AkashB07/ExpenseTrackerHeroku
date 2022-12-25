@@ -1,5 +1,5 @@
-// const url = 'http://localhost'
-const url ='http://52.66.252.234'
+const url = 'http://localhost'
+// const url ='http://52.66.252.234'
 
 const token = localStorage.getItem('token');
 

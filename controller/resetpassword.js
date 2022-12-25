@@ -11,15 +11,12 @@ const forgotpassword = async (req, res) => {
         const user = await User.findOne({where : { email }});
         if(user){
             const id = uuid.v4();
-            user.createForgotpassword({ id , active: true })
-                .catch(err => {
-                    throw new Error(err)
-                })
-
+            await user.createForgotpassword({ id , active: true })
+        
             sgMail.setApiKey(process.env.SENGRID_API_KEY)
 
-            // const url = 'http://localhost'
-             const url ='http://52.66.252.234'
+            const url = 'http://localhost'
+            //  const url ='http://52.66.252.234'
             const msg = {
                 to: email, // Change to your recipient
                 from: 'yj.rocks.2411@gmail.com', // Change to your verified sender
@@ -45,6 +42,7 @@ const forgotpassword = async (req, res) => {
         }else {
             throw new Error('User doesnt exist')
         }
+           
     } catch(err){
         console.error(err)
         return res.json({ message: err, sucess: false });
